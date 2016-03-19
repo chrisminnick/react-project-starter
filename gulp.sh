@@ -2,4 +2,4 @@
 
 [ ! -f node_modules/.bin/gulp ] && echo "Building npm modules:" && npm rebuild
 
-node_modules/.bin/gulp %*
+node_modules/.bin/gulp $*
