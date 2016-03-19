@@ -12,11 +12,11 @@
     gulp.task('version', function() {
         console.log("Checking node version.");
 
-        var packageJson = require("./package.json");
+        let packageJson = require("./package.json");
 
-        var expectedVersion = "v" + packageJson.engines.node;
+        let expectedVersion = "v" + packageJson.engines.node;
 
-        var actualVersion = process.version;
+        let actualVersion = process.version;
 
         if (actualVersion !== expectedVersion){
             console.log("Incorrect node version. expected " + expectedVersion + ". Actual: " + actualVersion);
