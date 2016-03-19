@@ -1,2 +1,5 @@
-.idea/workspace.xml
+# MacOS X
 .DS_Store
+
+# WebStorm
+.idea/workspace.xml
