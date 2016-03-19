@@ -2,6 +2,6 @@
 
 if not exist node_modules\.bin\gulp (
   echo Building npm modules:
-  npm rebuild
+  call npm rebuild
   )
-node_modules\.bin\gulp %*
+call node_modules\.bin\gulp %*
