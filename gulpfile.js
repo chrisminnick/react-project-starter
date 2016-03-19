@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    var EXPECTED_NODE_VERSION = "v4.2.3";
+    var EXPECTED_NODE_VERSION = "v4.2.2";
 
     var gulp = require('gulp');
     var fail   = require('gulp-fail');
@@ -13,13 +13,10 @@
     });
 
     gulp.task('version', function() {
-        console.log("Checking node version: ");
-        console.log("expected version: " + EXPECTED_NODE_VERSION);
         var actualVersion = process.version;
         var condition = actualVersion !== EXPECTED_NODE_VERSION;
-        console.log("actual version: " + actualVersion);
         if (condition){
-            console.log("Node version doesn't match.");
+            console.log("Incorrect node version. expected " + EXPECTED_NODE_VERSION + ". Actual: " + actualVersion);
             process.exit(1);
         }
 
