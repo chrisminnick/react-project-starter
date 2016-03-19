@@ -1,10 +1,29 @@
-var gulp = require('gulp');
+(function() {
+    "use strict";
 
-gulp.task('default', function() {
+    var EXPECTED_NODE_VERSION = "v4.2.3";
 
-//todo: run npm rebuild if .bin directory isn't present (new download from repo, for example)
+    var gulp = require('gulp');
+    var fail   = require('gulp-fail');
+    var gulpIf = require('gulp-if');
 
+    gulp.task('default', function() {
 
+        console.log('\n\nBUILD OK');
+    });
 
-console.log('\n\nBUILD OK');
-});
+    gulp.task('version', function() {
+        console.log("Checking node version: ");
+        console.log("expected version: " + EXPECTED_NODE_VERSION);
+        var actualVersion = process.version;
+        var condition = actualVersion !== EXPECTED_NODE_VERSION;
+        console.log("actual version: " + actualVersion);
+        if (condition){
+            console.log("Node version doesn't match.");
+            process.exit(1);
+        }
+
+    });
+
+}());
+
