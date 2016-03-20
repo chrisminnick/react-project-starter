@@ -14,9 +14,7 @@
         console.log("Checking node version.");
 
         let packageJson = require("./package.json");
-
-        let expectedVersion = packageJson.engines.node;
-
+        const expectedVersion = packageJson.engines.node;
         let actualVersion = process.version;
 
         if (semver.neq(expectedVersion,actualVersion)){
