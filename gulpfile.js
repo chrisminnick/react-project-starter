@@ -4,6 +4,7 @@
     let gulp = require('gulp');
     let semver = require('semver');
     let jshint = require('gulp-jshint');
+    let webserver = require('gulp-webserver');
 
     // General purpose tasks
 
@@ -12,11 +13,16 @@
 
         console.log('\n\nBUILD OK');
     });
+
+
     gulp.task("run", function() {
         console.log("Run a localhost server.");
-
-        
-    })
+        gulp.src('src')
+            .pipe(webserver({
+                livereload: true,
+                open: true
+            }));
+    });
 
     // Supporting tasks
 
