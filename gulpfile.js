@@ -14,7 +14,7 @@
     });
 
     gulp.task('version', function() {
-        console.log("Checking node version.");
+        console.log("Checking node version: .");
 
         let packageJson = require("./package.json");
         const expectedVersion = packageJson.engines.node;
@@ -27,7 +27,7 @@
     });
 
     gulp.task('lint', function() {
-        console.log("Linting JavaScript.");
+        console.log("Linting JavaScript: ");
         return gulp.src('gulpfile.js')
             .pipe(jshint({
                 esversion: 6
