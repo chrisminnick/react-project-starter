@@ -54,7 +54,7 @@
                 latedef: "nofunc", // trying to use variables before defining, not functions
                 nonbsp: true, // no nonbreaking white space
                 nonew: true, // no calling constructor that doesn't return an object
-                undef: true, // variables must be defined
+                //undef: true, // variables must be defined
                 // set environments
                 node: true,
                 browser: true,

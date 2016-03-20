@@ -11,11 +11,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-jasmine": "^2.3.0",
     "gulp-jshint": "^2.0.0",
     "gulp-webserver": "^0.9.1",
+    "jasmine": "^2.4.1",
     "jshint": "^2.9.1",
     "semver": "^5.1.0"
   }
