@@ -1,10 +1,9 @@
-(function() {
-    "use strict";
+(() => {
+"use strict";
 
-
-    var gulp = require('gulp');
-    var semver = require('semver');
-    var jshint = require('gulp-jshint');
+    let gulp = require('gulp');
+    let semver = require('semver');
+    let jshint = require('gulp-jshint');
 
 
     gulp.task('default', [ "version", "lint" ], function() {
@@ -37,4 +36,4 @@
 
     });
 
-}());
+})();
