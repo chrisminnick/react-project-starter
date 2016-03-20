@@ -5,7 +5,7 @@
     var gulp = require('gulp');
     var semver = require('semver');
 
-    gulp.task('default', [ "version" ], function() {
+    gulp.task('default', [ "version", "lint" ], function() {
 
         console.log('\n\nBUILD OK');
     });
@@ -21,6 +21,12 @@
             console.log("Incorrect node version. expected " + expectedVersion + ". Actual: " + actualVersion);
             process.exit(1);
         }
+    });
+
+    gulp.task('lint', function() {
+        console.log("Linting JavaScript.");
+
+        gulp.exec
     });
 
 }());
