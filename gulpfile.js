@@ -5,12 +5,20 @@
     let semver = require('semver');
     let jshint = require('gulp-jshint');
 
+    // General purpose tasks
 
     gulp.task('default', [ "version", "lint" ], function() {
         //gulp.watch('./js/*.js',['jshint']);
 
         console.log('\n\nBUILD OK');
     });
+    gulp.task("run", function() {
+        console.log("Run a localhost server.");
+
+        
+    })
+
+    // Supporting tasks
 
     gulp.task('version', function() {
         console.log("Checking node version: .");
