@@ -29,7 +29,15 @@
         console.log("Linting JavaScript: ");
         return gulp.src('gulpfile.js')
             .pipe(jshint({
-                esversion: 6
+                esversion: 6,
+                bitwise: true, // no bitwise operators, they're probably mistakes
+                curly: true, // curly braces required around blocks
+                eqeqeq: true, // require strict comparison
+                forin: true, // require for in loops to filter object's items
+                freeze: true, // prohibit overwriting native objects
+                latedef: "nofunc", // trying to use variables before defining, not functions
+                nonbsp: true, // no nonbreaking white space
+                nonew: true // no calling constructor that doesn't return an object
             }))
             .pipe(jshint.reporter('default'))
             .pipe(jshint.reporter('fail'));
