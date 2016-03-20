@@ -4,6 +4,10 @@
 (() => {
 "use strict";
 
+    var jasmine = require("jasmine");
+
+    assert.equal(add(3,4), 7);
+
     var result = add(3,4);
     var expected = 7;
 
@@ -12,7 +16,7 @@
     }
 
     function add(a,b) {
-        return a - b;
+        return a + b;
     }
 
 })();

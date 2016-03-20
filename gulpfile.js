@@ -1,14 +1,16 @@
 (() => {
 "use strict";
 
-    let gulp = require('gulp');
-    let semver = require('semver');
-    let jshint = require('gulp-jshint');
-    let webserver = require('gulp-webserver');
+    const gulp = require('gulp');
+    const semver = require('semver');
+    const jshint = require('gulp-jshint');
+    const webserver = require('gulp-webserver');
+    const jasmine = require('gulp-jasmine');
+
 
     // General purpose tasks
 
-    gulp.task('default', [ "version", "lint" ], function() {
+    gulp.task('default', [ "version", "lint", "test" ], function() {
         //gulp.watch('./js/*.js',['jshint']);
 
         console.log('\n\nBUILD OK');
@@ -61,6 +63,13 @@
             .pipe(jshint.reporter('default'))
             .pipe(jshint.reporter('fail'));
 
+    });
+
+    gulp.task('test', function() {
+        console.log("Running tests: ");
+        gulp.src('src/test.js')
+            // gulp-jasmine works on filepaths so you can't have any plugins before it
+            .pipe(jasmine());
     });
 
 })();
