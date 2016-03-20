@@ -37,7 +37,12 @@
                 freeze: true, // prohibit overwriting native objects
                 latedef: "nofunc", // trying to use variables before defining, not functions
                 nonbsp: true, // no nonbreaking white space
-                nonew: true // no calling constructor that doesn't return an object
+                nonew: true, // no calling constructor that doesn't return an object
+                undef: true, // variables must be defined
+                // set environments
+                node: true,
+                browser: true,
+                globals: []
             }))
             .pipe(jshint.reporter('default'))
             .pipe(jshint.reporter('fail'));
