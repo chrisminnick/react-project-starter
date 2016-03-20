@@ -67,7 +67,7 @@
 
     gulp.task('test', function() {
         console.log("Running tests: ");
-        gulp.src('src/test.js')
+        gulp.src('spec/test.js')
             // gulp-jasmine works on filepaths so you can't have any plugins before it
             .pipe(jasmine({
                 verbose:"true"
