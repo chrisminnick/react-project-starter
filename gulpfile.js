@@ -4,8 +4,11 @@
 
     var gulp = require('gulp');
     var semver = require('semver');
+    var jshint = require('gulp-jshint');
+
 
     gulp.task('default', [ "version", "lint" ], function() {
+        //gulp.watch('./js/*.js',['jshint']);
 
         console.log('\n\nBUILD OK');
     });
@@ -25,8 +28,12 @@
 
     gulp.task('lint', function() {
         console.log("Linting JavaScript.");
+        return gulp.src('gulpfile.js')
+            .pipe(jshint({
+                esversion: 6
+            }))
+            .pipe(jshint.reporter('default'));
 
-        gulp.exec
     });
 
 }());
