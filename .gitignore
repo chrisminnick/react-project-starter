@@ -6,3 +6,6 @@
 
 # npm
 node_modules/**/.bin/
+
+# karma binaries
+node_modules/fsevents/lib/
