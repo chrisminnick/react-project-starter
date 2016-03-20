@@ -41,7 +41,7 @@
 
     gulp.task('lint', function() {
         console.log("Linting JavaScript: ");
-        return gulp.src('gulpfile.js')
+        return gulp.src(["gulpfile.js","src/**/*.js"])
             .pipe(jshint({
                 esversion: 6,
                 bitwise: true, // no bitwise operators, they're probably mistakes
