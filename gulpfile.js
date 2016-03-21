@@ -1,4 +1,4 @@
-(() => {
+(function() {
 "use strict";
 
     const gulp = require('gulp');
@@ -6,16 +6,32 @@
     const jshint = require('gulp-jshint');
     const webserver = require('gulp-webserver');
     const jasmine = require('gulp-jasmine');
-    var karma = require('karma');
-    const gulpkarma = require("gulp-karma-runner");
+    const karma = require("gulp-karma-runner");
+    const babel = require('gulp-babel');
 
 
     // General purpose tasks
 
+    gulp.task('babel', () => {
+        return gulp.src(['spec/*.js','src/**/*.js'],{base: "."})
+            .pipe(babel({
+                presets: ['es2015']
+            }))
+            .pipe(gulp.dest('dist'));
+    });
+
     gulp.task('karma', function (done) {
-        karma.server.start({
-            configFile: __dirname + '/karma.conf.js'
-        }, done);
+        gulp.src([
+                "src/**/*.js",
+                "spec/**/*.js"
+            ],
+            {"read": false}).pipe(
+            karma.server({
+                configFile: __dirname + '/karma.conf.js',
+                "singleRun": false,
+                "frameworks": ["jasmine"]
+            })
+        );
     });
 
     gulp.task('default', [ "version", "lint", "test" ], function() {
@@ -76,15 +92,18 @@
 
     gulp.task("test", function () {
         gulp.src([
+            "spec/**/*.js",
             "src/**/*.js"
         ], {"read": false}).pipe(
-            gulpkarma.runner({
+            karma.runner({
                 configFile: __dirname + '/karma.conf.js',
                 "singleRun": false,
-                "frameworks": ["jasmine"],
-                "browsers": ["Chrome", "Firefox"]
+                "frameworks": ["jasmine"]
+
             })
         );
     });
+
+
 
 })();
