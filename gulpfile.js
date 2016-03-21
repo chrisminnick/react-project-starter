@@ -29,7 +29,7 @@
             karma.server({
                 configFile: __dirname + '/karma.conf.js',
                 "singleRun": false,
-                "frameworks": ["jasmine"]
+                "frameworks": ["jasmine","commonjs"]
             })
         );
     });
@@ -98,7 +98,7 @@
             karma.runner({
                 configFile: __dirname + '/karma.conf.js',
                 "singleRun": false,
-                "frameworks": ["jasmine"]
+                "frameworks": ["jasmine","commonjs"]
 
             })
         );
