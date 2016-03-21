@@ -76,9 +76,17 @@
 
     /** single run */
     gulp.task('test', function(cb) {
+        /** todo: separate starting server from running test */
+        /** todo: implement correct method of starting server */
+
         runKarma('karma.conf.js', {
             autoWatch: false,
-            singleRun: true
+            singleRun: true,
+            /*expectedBrowsers: [
+                "Firefox 34.0.0 (Mac OS X 10.10.0)",
+                "Chrome 48.0.2564 (Mac OS X 10.10.5)"
+            ],*/
+            strict: false
         }, cb);
     });
 
