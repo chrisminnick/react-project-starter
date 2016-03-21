@@ -6,10 +6,9 @@
     const jshint = require('gulp-jshint');
     const webserver = require('gulp-webserver');
     const jasmine = require('gulp-jasmine');
-    const karma = require('karma');
-    const path = require('path');
-    const gutil = require('gulp-util');
-    const karmaParseConfig = require('karma/lib/config').parseConfig;
+    var karma = require('karma');
+    const gulpkarma = require("gulp-karma-runner");
+
 
     // General purpose tasks
 
@@ -74,41 +73,18 @@
 
     });
 
-    /** single run */
-    gulp.task('test', function(cb) {
-        /** todo: separate starting server from running test */
-        /** todo: implement correct method of starting server */
 
-        runKarma('karma.conf.js', {
-            autoWatch: false,
-            singleRun: true,
-            /*expectedBrowsers: [
-                "Firefox 34.0.0 (Mac OS X 10.10.0)",
-                "Chrome 48.0.2564 (Mac OS X 10.10.5)"
-            ],*/
-            strict: false
-        }, cb);
+    gulp.task("test", function () {
+        gulp.src([
+            "src/**/*.js"
+        ], {"read": false}).pipe(
+            gulpkarma.runner({
+                configFile: __dirname + '/karma.conf.js',
+                "singleRun": false,
+                "frameworks": ["jasmine"],
+                "browsers": ["Chrome", "Firefox"]
+            })
+        );
     });
-
-
-    function runKarma(configFilePath, options, cb) {
-
-        configFilePath = path.resolve(configFilePath);
-
-        var server = karma.server;
-        var log=gutil.log, colors=gutil.colors;
-        var config = karmaParseConfig(configFilePath, {});
-
-        Object.keys(options).forEach(function(key) {
-            config[key] = options[key];
-        });
-
-        server.start(config, function(exitCode) {
-            log('Karma has exited with ' + colors.red(exitCode));
-            cb();
-            process.exit(exitCode);
-        });
-    }
-
 
 })();
