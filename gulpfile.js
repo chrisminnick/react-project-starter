@@ -4,15 +4,14 @@
     const gulp = require('gulp');
     const semver = require('semver');
     const jshint = require('gulp-jshint');
-    const webserver = require('gulp-webserver');
-    const jasmine = require('gulp-jasmine');
     const karma = require("gulp-karma-runner");
-    const babel = require('gulp-babel');
 
 
     // General purpose tasks
 
     gulp.task('babel', () => {
+        const babel = require('gulp-babel');
+
         return gulp.src(['spec/*.js','src/**/*.js'],{base: "."})
             .pipe(babel({
                 presets: ['es2015']
@@ -28,8 +27,7 @@
             {"read": false}).pipe(
             karma.server({
                 configFile: __dirname + '/karma.conf.js',
-                "singleRun": false,
-                "frameworks": ["jasmine","commonjs"]
+                "singleRun": false
             })
         );
     });
@@ -42,6 +40,8 @@
 
 
     gulp.task("run", function() {
+        const webserver = require('gulp-webserver');
+
         console.log("Run a localhost server.");
         gulp.src('src')
             .pipe(webserver({
@@ -97,9 +97,7 @@
         ], {"read": false}).pipe(
             karma.runner({
                 configFile: __dirname + '/karma.conf.js',
-                "singleRun": false,
-                "frameworks": ["jasmine","commonjs"]
-
+                "singleRun": false
             })
         );
     });
