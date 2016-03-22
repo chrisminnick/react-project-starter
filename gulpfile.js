@@ -13,7 +13,8 @@
     // General purpose tasks
     gulp.task('webpack', function() {
         return gulp.src('src/app.js')
-            .pipe(webpack( require('./webpack.config.js') ));
+            .pipe(webpack( require('./webpack.config.js') ))
+            .pipe(gulp.dest('dist/'));
     });
 
     gulp.task('babel', () => {
@@ -22,7 +23,7 @@
             .pipe(babel({
                 presets: ['es2015']
             }))
-            .pipe(gulp.dest('dist'));
+            .pipe(gulp.dest('dist/src'));
     });
 
     gulp.task('karma', function (done) {
