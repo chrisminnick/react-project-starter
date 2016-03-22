@@ -5,12 +5,18 @@
     const semver = require('semver');
     const jshint = require('gulp-jshint');
     const karma = require("gulp-karma-runner");
+    const webpack = require('gulp-webpack');
+    const runSequence = require('run-sequence');
+    const babel = require('gulp-babel');
 
 
     // General purpose tasks
+    gulp.task('webpack', function() {
+        return gulp.src('src/app.js')
+            .pipe(webpack( require('./webpack.config.js') ));
+    });
 
     gulp.task('babel', () => {
-        const babel = require('gulp-babel');
 
         return gulp.src(['spec/*.js','src/**/*.js'],{base: "."})
             .pipe(babel({
@@ -32,12 +38,14 @@
         );
     });
 
-    gulp.task('default', [ "version", "lint", "test" ], function() {
-        //gulp.watch('./js/*.js',['jshint']);
 
-        console.log('\n\nBUILD OK');
+
+    gulp.task('default', function(done) {
+        runSequence('version', 'lint', 'test', 'webpack', function() {
+            console.log('\n\nBUILD OK');
+            done();
+        });
     });
-
 
     gulp.task("run", function() {
         const webserver = require('gulp-webserver');
