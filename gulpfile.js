@@ -14,7 +14,7 @@
     gulp.task('webpack', function() {
         return gulp.src('src/app.js')
             .pipe(webpack( require('./webpack.config.js') ))
-            .pipe(gulp.dest('dist/'));
+            .pipe(gulp.dest('dist'));
     });
 
     gulp.task('babel', () => {
@@ -23,7 +23,7 @@
             .pipe(babel({
                 presets: ['es2015']
             }))
-            .pipe(gulp.dest('dist/src'));
+            .pipe(gulp.dest('dist'));
     });
 
     gulp.task('karma', function (done) {
@@ -52,7 +52,7 @@
         const webserver = require('gulp-webserver');
 
         console.log("Run a localhost server.");
-        gulp.src('src')
+        gulp.src('dist')
             .pipe(webserver({
                 livereload: true,
                 open: true
