@@ -42,13 +42,13 @@
 
 
     gulp.task('default', function(done) {
-        runSequence('version', 'lint', 'test', 'webpack', function() {
+        runSequence('version', 'lint', 'test', function() {
             console.log('\n\nBUILD OK');
             done();
         });
     });
 
-    gulp.task("run", function() {
+    gulp.task("run", [ "build" ], function() {
         const webserver = require('gulp-webserver');
 
         console.log("Run a localhost server.");
@@ -109,6 +109,11 @@
                 "singleRun": false
             })
         );
+    });
+
+    gulp.task("build", ["webpack"], function() {
+        console.log("creating dist directory.");
+
     });
 
 
