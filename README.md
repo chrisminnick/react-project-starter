@@ -20,6 +20,10 @@ To run the application:
 1. Run ./gulp.sh run (Mac) or gulp run to start a local web server.
 2. A browser should launch. If not, navigate to http://localhost:8000
 
+## Todo
+
+1. Make gulpfile build run in sequence and end with BUILD OK
+2. Figure out how to make good production directory with webpack
 
 ## Usage
 

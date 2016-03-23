@@ -1,3 +1,4 @@
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry  : './src/app.js',
@@ -12,4 +13,14 @@ module.exports = {
         }
         ]
     }
+};
+
+//copy everything from src. Not really what we want.
+module.exports = {
+    path: __dirname + "/dist/src",
+    plugins: [
+        new CopyWebpackPlugin([
+            { from: 'src' }
+        ])
+    ]
 };
