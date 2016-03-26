@@ -2,7 +2,7 @@
 .DS_Store
 
 # WebStorm
-.idea/workspace.xml
+.idea/**
 
 # npm
 node_modules/**/.bin/
