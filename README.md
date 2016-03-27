@@ -4,12 +4,12 @@
 
 1. Install Node.js 4.2.3
 2. Install git.
-3. Install gulp globally: npm install gulp -g
+3. Install gulp globally: npm install gulp -g (if not possible, use the ./gulp.sh shell script in the repo)
 3. Open a command prompt
 4. Change to the directory that will contain your project. 
 5. Copy the source repository to your computer: git clone https://github.com/chrisminnick/react-project-starter.git
 6. Change to the project directory
-7. npm rebuild
+7. npm rebuild (or, just run the ./gulp.sh shell script)
 
 
 ## Todo
