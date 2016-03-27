@@ -1,29 +1,22 @@
 (function() {
 "use strict";
 
-    const gulp = require('gulp');
-    const gutil = require('gulp-util');
-    const semver = require('semver');
-    const jshint = require('gulp-jshint');
-    const karma = require("gulp-karma-runner");
-    const webpack = require('gulp-webpack');
-    const runSequence = require('run-sequence');
-    const babel = require('gulp-babel');
+    const   gulp = require('gulp'),
+            gutil = require('gulp-util'),
+            semver = require('semver'),
+            jshint = require('gulp-jshint'),
+            karma = require("gulp-karma-runner"),
+            webpack = require('gulp-webpack');
 
 
     // General purpose tasks
+    gulp.task('default', ["lint","test"], function() {
+        return gutil.log('\n\nBUILD OK');
+    });
+
     gulp.task('webpack', function() {
         return gulp.src('src/app.js')
             .pipe(webpack( require('./webpack.config.js') ))
-            .pipe(gulp.dest('dist'));
-    });
-
-    gulp.task('babel', function() {
-
-        return gulp.src(['spec/*.js','src/**/*.js'],{base: "."})
-            .pipe(babel({
-                presets: ['es2015']
-            }))
             .pipe(gulp.dest('dist'));
     });
 
@@ -38,12 +31,6 @@
                 "singleRun": false
             })
         );
-    });
-
-
-
-    gulp.task('default', ["lint","test"], function() {
-            return gutil.log('\n\nBUILD OK');
     });
 
     gulp.task("run", [ "build" ], function() {
@@ -114,7 +101,5 @@
         gulp.src('src/*.html').pipe(gulp.dest('dist'));
 
     });
-
-
 
 })();
