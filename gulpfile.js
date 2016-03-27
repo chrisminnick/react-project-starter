@@ -2,6 +2,7 @@
 "use strict";
 
     const gulp = require('gulp');
+    const gutil = require('gulp-util');
     const semver = require('semver');
     const jshint = require('gulp-jshint');
     const karma = require("gulp-karma-runner");
@@ -17,7 +18,7 @@
             .pipe(gulp.dest('dist'));
     });
 
-    gulp.task('babel', () => {
+    gulp.task('babel', function() {
 
         return gulp.src(['spec/*.js','src/**/*.js'],{base: "."})
             .pipe(babel({
@@ -41,11 +42,8 @@
 
 
 
-    gulp.task('default', function(done) {
-        runSequence('version', 'lint', 'test', function() {
-            console.log('\n\nBUILD OK');
-            done();
-        });
+    gulp.task('default', ["version","lint","test"], function() {
+            return gutil.log('\n\nBUILD OK');
     });
 
     gulp.task("run", [ "build" ], function() {
