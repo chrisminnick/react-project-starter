@@ -6,7 +6,8 @@
             semver = require('semver'),
             jshint = require('gulp-jshint'),
             karma = require("gulp-karma-runner"),
-            webpack = require('gulp-webpack');
+            webpack = require('gulp-webpack'),
+            DIST = "dist";
 
 
     // General purpose tasks
@@ -17,7 +18,7 @@
     gulp.task('webpack', function() {
         return gulp.src('src/app.js')
             .pipe(webpack( require('./webpack.config.js') ))
-            .pipe(gulp.dest('dist'));
+            .pipe(gulp.dest(DIST));
     });
 
     gulp.task('karma', function (done) {
@@ -98,7 +99,7 @@
 
     gulp.task("build", ["webpack"], function() {
         console.log("creating dist directory.");
-        gulp.src('src/*.html').pipe(gulp.dest('dist'));
+        gulp.src('src/*.html').pipe(gulp.dest(DIST));
 
     });
 
