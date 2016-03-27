@@ -42,7 +42,7 @@
 
 
 
-    gulp.task('default', ["version","lint","test"], function() {
+    gulp.task('default', ["lint","test"], function() {
             return gutil.log('\n\nBUILD OK');
     });
 
