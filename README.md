@@ -1,5 +1,7 @@
 # React Course Build
 
+An automated starter project for ES6 / React development
+
 ## Installation
 
 1. Install Node.js 4.2.3
