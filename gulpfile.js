@@ -111,6 +111,7 @@
 
     gulp.task("build", ["webpack"], function() {
         console.log("creating dist directory.");
+        gulp.src('src/*.html').pipe(gulp.dest('dist'));
 
     });
 

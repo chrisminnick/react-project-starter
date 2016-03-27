@@ -6,7 +6,7 @@
 2. Install git.
 3. Open a command prompt
 4. Change to the directory that will contain your project. 
-5. Copy the source repository to your computer (todo: insert github url here)
+5. Copy the source repository to your computer: git clone https://github.com/chrisminnick/react-project-starter.git
 6. Change to the project directory
 
 To build:
