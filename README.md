@@ -9,7 +9,7 @@
 4. Change to the directory that will contain your project. 
 5. Copy the source repository to your computer: git clone https://github.com/chrisminnick/react-project-starter.git
 6. Change to the project directory
-
+7. npm rebuild
 
 
 ## Todo
