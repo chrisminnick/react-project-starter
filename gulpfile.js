@@ -16,6 +16,10 @@
         return gutil.log('\n\nBUILD OK');
     });
 
+    gulp.task('clean', function() {
+        console.log ("removing dist directory");
+    });
+
     gulp.task('webpack', function() {
         return gulp.src('src/app.js')
             .pipe(webpack( require('./webpack.config.js') ))
