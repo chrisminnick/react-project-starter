@@ -7,12 +7,15 @@
             jshint = require('gulp-jshint'),
             karma = require("gulp-karma-runner"),
             webpack = require('gulp-webpack'),
-            jasmine = require('gulp-jasmine'),
             DIST = "dist";
 
 
     // General purpose tasks
+<<<<<<< HEAD
     gulp.task('default', ["lint","test"], function() {
+=======
+    gulp.task('default', ["version","lint","test"], function() {
+>>>>>>> parent of 21b56c5... moved HelloSpec into specs
         return gutil.log('\n\nBUILD OK');
     });
 
@@ -85,7 +88,10 @@
 
     });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 21b56c5... moved HelloSpec into specs
 
     gulp.task("test", function () {
         gulp.src([
