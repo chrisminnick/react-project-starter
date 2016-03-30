@@ -12,7 +12,7 @@
 
 
     // General purpose tasks
-    gulp.task('default', ["lint","jasmine","test"], function() {
+    gulp.task('default', ["lint","test"], function() {
         return gutil.log('\n\nBUILD OK');
     });
 
@@ -85,10 +85,7 @@
 
     });
 
-    gulp.task('jasmine', () =>
-        gulp.src('spec/HelloSpec.js')
-            .pipe(jasmine())
-    );
+
 
     gulp.task("test", function () {
         gulp.src([

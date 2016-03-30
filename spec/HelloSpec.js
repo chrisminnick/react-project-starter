@@ -1,14 +1,7 @@
 (function() {
     "use strict";
+    import {hello} from 'hello';
 
-    function hello(name) {
-        if (name) {
-            return "Hello, " + name;
-        } else {
-            return "Hello";
-        }
-    }
-    
     describe("Hello", function() {
         it("concats Hello and a name", function() {
             let actual = hello("World");

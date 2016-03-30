@@ -8,7 +8,9 @@
     let result = hello("World");
     let expected = "Hello, World!";
     try {
-        if (result !== expected) throw new Error("Expected " + expected + " but got " + result);
+        if (result !== expected) {
+            throw new Error("Expected " + expected + " but got " + result);
+        }
     } catch (err) {
         console.log(err);
     }
