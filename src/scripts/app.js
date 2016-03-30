@@ -4,10 +4,11 @@
 (function() {
     "use strict";
 
-    var sayHello = require("./scripts/sayHello.js");
+    var sayHello = require("./sayHello.js");
 
-    console.log(sayHello.greeting("Your name"));
+    console.log(sayHello.greet("Your name"));
+    console.log("test");
 
 
 
-});
+})();

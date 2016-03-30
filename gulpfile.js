@@ -9,7 +9,7 @@
             webpack = require('gulp-webpack'),
             jasmine = require('gulp-jasmine'),
             del = require('del'),
-            DIST = "dist";
+            DIST = "dist/scripts";
 
 
     // General purpose tasks
@@ -27,7 +27,7 @@
     });
 
     gulp.task('webpack', function() {
-        return gulp.src('src/app.js')
+        return gulp.src('src/scripts/app.js')
             .pipe(webpack( require('./webpack.config.js') ))
             .pipe(gulp.dest(DIST));
     });
