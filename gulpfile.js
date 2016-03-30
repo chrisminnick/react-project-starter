@@ -9,7 +9,7 @@
             webpack = require('gulp-webpack'),
             jasmine = require('gulp-jasmine'),
             del = require('del'),
-            DIST = "dist/scripts";
+            DIST = "dist";
 
 
     // General purpose tasks
@@ -29,7 +29,7 @@
     gulp.task('webpack', function() {
         return gulp.src('src/scripts/app.js')
             .pipe(webpack( require('./webpack.config.js') ))
-            .pipe(gulp.dest(DIST));
+            .pipe(gulp.dest(DIST + "/scripts"));
     });
 
     gulp.task('karma', function (done) {
@@ -45,7 +45,7 @@
         );
     });
 
-    gulp.task("run", function() {
+    gulp.task("run", ['build'],function() {
         const webserver = require('gulp-webserver');
 
         console.log("Run a localhost server.");
