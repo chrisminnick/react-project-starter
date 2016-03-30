@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    var sayHello = require("../src/sayHello.js");
+    var sayHello = require("../src/scripts/sayHello.js");
 
     describe("Greet", function() {
         it("concats Hello and a name", function() {
