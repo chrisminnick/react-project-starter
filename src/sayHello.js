@@ -10,4 +10,6 @@
             return "Hello";
         }
     }
-});
+
+    exports.greet = greet;
+})();
