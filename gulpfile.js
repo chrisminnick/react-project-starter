@@ -96,7 +96,7 @@
     });
 
     gulp.task('jasmine', () =>
-        gulp.src('spec/HelloSpec.js')
+        gulp.src('spec/sayHelloSpec.js')
             .pipe(jasmine())
     );
 
