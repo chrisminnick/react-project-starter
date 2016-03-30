@@ -1,7 +1,13 @@
 (function() {
     "use strict";
 
-    var hello = require("../src/hello.js");
+    function hello(name) {
+        if (name) {
+            return "Hello, " + name;
+        } else {
+            return "Hello";
+        }
+    }
 
     describe("Hello", function() {
         it("concats Hello and a name", function() {
