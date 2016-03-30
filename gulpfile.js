@@ -8,6 +8,7 @@
             karma = require("gulp-karma-runner"),
             webpack = require('gulp-webpack'),
             jasmine = require('gulp-jasmine'),
+            del = require('del'),
             DIST = "dist";
 
 
@@ -15,6 +16,14 @@
 
     gulp.task('default', ["lint","jasmine","test"], function() {
         return gutil.log('\n\nBUILD OK');
+    });
+
+    gulp.task('clean', function() {
+        console.log ("removing dist directory");
+        return del([
+            'dist/**/*',
+            'dist'
+        ]);
     });
 
     gulp.task('webpack', function() {
@@ -104,7 +113,7 @@
         );
     });
 
-    gulp.task("build", ["webpack"], function() {
+    gulp.task("build", ["clean","webpack"], function() {
         console.log("creating dist directory.");
         gulp.src('src/*.html').pipe(gulp.dest(DIST));
 
