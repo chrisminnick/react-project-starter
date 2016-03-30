@@ -28,8 +28,8 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 
     preprocessors: {
-      'src/**/*.js': ['es6-module'],
-      'spec/**/*.js': ['es6-module']
+      'src/**/*.js': ['commonjs'],
+      'spec/**/*.js': ['commonjs']
     },
 
     // test results reporter to use

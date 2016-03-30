@@ -1,6 +1,7 @@
 (function() {
     "use strict";
-    import {hello} from 'hello';
+
+    var hello = require("../src/hello.js");
 
     describe("Hello", function() {
         it("concats Hello and a name", function() {
