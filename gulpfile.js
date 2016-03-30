@@ -45,7 +45,7 @@
         );
     });
 
-    gulp.task("run", [ "build" ], function() {
+    gulp.task("run", function() {
         const webserver = require('gulp-webserver');
 
         console.log("Run a localhost server.");
