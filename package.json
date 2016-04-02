@@ -17,6 +17,7 @@
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "^6.1.2",
+    "gulp-connect": "^3.2.2",
     "gulp-jasmine": "^2.3.0",
     "gulp-jshint": "^2.0.0",
     "gulp-karma-runner": "^1.1.9",

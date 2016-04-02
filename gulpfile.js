@@ -9,6 +9,7 @@
             webpack = require('gulp-webpack'),
             jasmine = require('gulp-jasmine'),
             del = require('del'),
+            connect = require('gulp-connect'),
             DIST = "dist";
 
 
@@ -60,17 +61,17 @@
         ]);
     });
 
+    gulp.task("copy", function() {
+        return gulp.src('src/*.html').pipe(gulp.dest(DIST));
+    });
+
     gulp.task('webpack', function() {
         return gulp.src('src/scripts/app.js')
             .pipe(webpack( require('./webpack.config.js') ))
             .pipe(gulp.dest(DIST + "/scripts"));
     });
 
-    gulp.task("build", gulp.series("clean","webpack"), function() {
-        console.log("creating dist directory.");
-        gulp.src('src/*.html').pipe(gulp.dest(DIST));
-
-    });
+    gulp.task("build", gulp.series("clean","copy","webpack"));
 
     gulp.task('karma', function (done) {
         gulp.src([
@@ -85,15 +86,12 @@
         );
     });
 
-    gulp.task("run", gulp.series('build'),function() {
-        const webserver = require('gulp-webserver');
 
-        console.log("Run a localhost server.");
-        gulp.src('dist')
-            .pipe(webserver({
-                livereload: true,
-                open: true
-            }));
+    gulp.task('run', function() {
+        connect.server({
+            root: 'dist',
+            livereload: true
+        });
     });
 
 
