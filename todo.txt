@@ -1,0 +1,20 @@
+* Update readme.md with full instructions.
+
+* Break out the powerpoint into 2 parts: Slides and Labs
+
+* Update all labs with correct syntax for gulp 4
+
+* Figure out correct syntax for gulp 4
+
+* Outline DOM section in detail
+  * What is the DOM
+  * Viewing the DOM
+  * Manipulating the DOM
+    * Creating Element
+    * Appending Elements
+    * Removing Elements
+    * Changing Elements
+
+* Figure out what the test app will be
+
+* Write about using Debug window in Karma to see the rendered things from tests.
