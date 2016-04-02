@@ -16,5 +16,9 @@
     * Changing Elements
 
 * Figure out what the test app will be
+  * a todo list
+  * color switching buttons
+  * toggle button that shows and hides something
+  * toggle button that shows and hides instructions
 
 * Write about using Debug window in Karma to see the rendered things from tests.
