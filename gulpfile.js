@@ -12,65 +12,6 @@
             DIST = "dist";
 
 
-    // General purpose tasks
-
-    gulp.task('default', ["lint","jasmine","test"], function() {
-        return gutil.log('\n\nBUILD OK');
-    });
-
-    gulp.task('clean', function() {
-        console.log ("removing dist directory");
-        return del([
-            'dist/**/*',
-            'dist'
-        ]);
-    });
-
-    gulp.task('webpack', function() {
-        return gulp.src('src/scripts/app.js')
-            .pipe(webpack( require('./webpack.config.js') ))
-            .pipe(gulp.dest(DIST + "/scripts"));
-    });
-
-    gulp.task('karma', function (done) {
-        gulp.src([
-                "src/**/*.js",
-                "spec/**/*.js"
-            ],
-            {"read": false}).pipe(
-            karma.server({
-                configFile: __dirname + '/karma.conf.js',
-                "singleRun": false
-            })
-        );
-    });
-
-    gulp.task("run", ['build'],function() {
-        const webserver = require('gulp-webserver');
-
-        console.log("Run a localhost server.");
-        gulp.src('dist')
-            .pipe(webserver({
-                livereload: true,
-                open: true
-            }));
-    });
-
-    // Supporting tasks
-
-    gulp.task('version', function() {
-        console.log("Checking node version: .");
-
-        let packageJson = require("./package.json");
-        const expectedVersion = packageJson.engines.node;
-        let actualVersion = process.version;
-
-        if (semver.neq(expectedVersion,actualVersion)){
-            console.log("Incorrect node version. expected " + expectedVersion + ". Actual: " + actualVersion);
-            process.exit(1);
-        }
-    });
-
     gulp.task('lint', function() {
         console.log("Linting JavaScript: ");
         return gulp.src(["gulpfile.js","src/**/*.js"])
@@ -95,14 +36,8 @@
 
     });
 
-    gulp.task('jasmine', () =>
-        gulp.src('spec/sayHelloSpec.js')
-            .pipe(jasmine())
-    );
-
-
     gulp.task("test", function () {
-        gulp.src([
+        return gulp.src([
             "spec/**/*.js",
             "src/**/*.js"
         ], {"read": false}).pipe(
@@ -113,10 +48,73 @@
         );
     });
 
-    gulp.task("build", ["clean","webpack"], function() {
+    gulp.task('default', gulp.series(['lint','test']), function() {
+        return gutil.log('\n\nBUILD OK');
+    });
+
+    gulp.task('clean', function() {
+        console.log ("removing dist directory");
+        return del([
+            'dist/**/*',
+            'dist'
+        ]);
+    });
+
+    gulp.task('webpack', function() {
+        return gulp.src('src/scripts/app.js')
+            .pipe(webpack( require('./webpack.config.js') ))
+            .pipe(gulp.dest(DIST + "/scripts"));
+    });
+
+    gulp.task("build", gulp.series("clean","webpack"), function() {
         console.log("creating dist directory.");
         gulp.src('src/*.html').pipe(gulp.dest(DIST));
 
     });
+
+    gulp.task('karma', function (done) {
+        gulp.src([
+                "src/**/*.js",
+                "spec/**/*.js"
+            ],
+            {"read": false}).pipe(
+            karma.server({
+                configFile: __dirname + '/karma.conf.js',
+                "singleRun": false
+            })
+        );
+    });
+
+    gulp.task("run", gulp.series('build'),function() {
+        const webserver = require('gulp-webserver');
+
+        console.log("Run a localhost server.");
+        gulp.src('dist')
+            .pipe(webserver({
+                livereload: true,
+                open: true
+            }));
+    });
+
+
+    gulp.task('version', function() {
+        console.log("Checking node version: .");
+
+        let packageJson = require("./package.json");
+        const expectedVersion = packageJson.engines.node;
+        let actualVersion = process.version;
+
+        if (semver.neq(expectedVersion,actualVersion)){
+            console.log("Incorrect node version. expected " + expectedVersion + ". Actual: " + actualVersion);
+            process.exit(1);
+        }
+    });
+
+
+
+
+
+
+
 
 })();
