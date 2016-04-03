@@ -4,5 +4,8 @@
 (() => {
     "use strict";
 
+    exports.toggle = function toggle(){
+
+    };
 
 })();
