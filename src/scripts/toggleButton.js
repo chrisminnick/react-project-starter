@@ -4,9 +4,17 @@
 (() => {
     "use strict";
 
-    exports.toggle = function toggle(element,buttonText){
-        element.innerHTML = buttonText;
-        //make the button alternate between hiding and showing.
+    exports.toggle = function toggle(element,toggledText){
+        var originalText;
+        var toggled;
+        if (toggled===1) {
+            toggled = 0;
+            element.innerHTML = originalText;
+        } else {
+            originalText = element.innerHTML;
+            element.innerHTML = toggledText;
+            toggled = 1;
+        }
     };
 
 })();
