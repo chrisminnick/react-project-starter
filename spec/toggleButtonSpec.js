@@ -9,7 +9,13 @@
             document.body.appendChild(myButton);
             toggleButton.toggle(myButton,"test");
             var buttonText = myButton.innerHTML;
+
+
             expect(buttonText).toEqual("test");
+
+            document.body.removeChild(myButton);
+
+
         })
 
     });
