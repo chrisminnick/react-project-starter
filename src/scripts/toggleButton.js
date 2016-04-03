@@ -1,9 +1,7 @@
-/**
- * Created by chris on 4/3/16.
- */
-(() => {
-    "use strict";
+//no need to use iife in modules because they already have their own scope.
 
-    //todo: write toggle() as ES6 function and export as ES6 module
+export class toggle {
+    constructor() {
 
-})();
+    }
+}
