@@ -6,6 +6,7 @@
 
     exports.toggle = function toggle(element,buttonText){
         element.innerHTML = buttonText;
+        //make the button alternate between hiding and showing.
     };
 
 })();
