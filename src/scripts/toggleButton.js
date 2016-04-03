@@ -7,9 +7,11 @@
     exports.toggle = function toggle(element,toggledText){
         var originalText;
         var toggled;
-        if (toggled===1) {
+        var buttonText = element.innerHTML;
+
+        if (buttonText === toggledText) {
             toggled = 0;
-            element.innerHTML = originalText;
+            element.innerHTML = "Toggle me.";
         } else {
             originalText = element.innerHTML;
             element.innerHTML = toggledText;

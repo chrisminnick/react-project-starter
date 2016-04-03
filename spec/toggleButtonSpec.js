@@ -4,7 +4,7 @@
     var toggleButton = require("../src/scripts/toggleButton.js");
     describe("toggleButton", function() {
 
-        /*it("changes the text on a button", function() {
+        it("changes the text on a button", function() {
             var myButton = document.createElement("button");
             var toggledText = "Toggled.";
             document.body.appendChild(myButton);
@@ -17,32 +17,34 @@
 
             removeElement(myButton);
 
-        });*/
-        it("alternates between two messages", function() {
+        });
 
+        it ("toggles between two messages", function() {
             var myButton = document.createElement("button");
-            var originalButtonText = "Toggle me.";
-            var toggledText = "Toggled.";
-
-
             document.body.appendChild(myButton);
-            myButton.innerHTML = originalButtonText;
-            var buttonText = originalButtonText;
 
+            var originalMessage = "Toggle me.";
+            var toggledMessage = "Toggled.";
 
-            toggleButton.toggle(myButton,toggledText);
-            buttonText = myButton.innerHTML;
+            toggleButton.toggle(myButton,toggledMessage);
 
-            expect(buttonText).toEqual(toggledText);
+            var buttonText = myButton.innerHTML;
+            expect(buttonText).toEqual(toggledMessage);
 
-            toggleButton.toggle(myButton,toggledText);
-            buttonText = myButton.innerHTML;
+            toggleButton.toggle(myButton,toggledMessage);
 
-            expect(buttonText).toEqual(originalButtonText);
+            var buttonText = myButton.innerHTML;
+            expect(buttonText).toEqual(originalMessage);
 
-            removeElement(myButton);
+            toggleButton.toggle(myButton,toggledMessage);
+
+            var buttonText = myButton.innerHTML;
+            expect(buttonText).toEqual(toggledMessage);
+
+            //removeElement(myButton);
 
         });
+
 
     });
 
