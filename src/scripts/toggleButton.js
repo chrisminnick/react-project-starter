@@ -4,5 +4,6 @@
 (() => {
     "use strict";
 
+    //todo: write toggle() as ES6 function and export as ES6 module
 
 })();

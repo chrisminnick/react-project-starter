@@ -4,7 +4,7 @@
     var toggleButton = require("../src/scripts/toggleButton.js");
     describe("toggleButton", function() {
         it("has an API", function(){
-
+            toggleButton.toggle();
 
 
         });
