@@ -2,12 +2,10 @@
 "use strict";
 
     const   gulp = require('gulp'),
-            gutil = require('gulp-util'),
             semver = require('semver'),
             jshint = require('gulp-jshint'),
             karma = require("gulp-karma-runner"),
             webpack = require('gulp-webpack'),
-            jasmine = require('gulp-jasmine'),
             del = require('del'),
             connect = require('gulp-connect'),
             DIST = "dist";
@@ -49,8 +47,8 @@
         );
     });
 
-    gulp.task('default', gulp.series(['lint','test']), function() {
-        return gutil.log('\n\nBUILD OK');
+    gulp.task('default', gulp.parallel(['lint','test']), function() {
+        return console.log('\n\nBUILD OK');
     });
 
     gulp.task('clean', function() {
@@ -71,7 +69,7 @@
             .pipe(gulp.dest(DIST + "/scripts"));
     });
 
-    gulp.task("build", gulp.series("clean","copy","webpack"));
+    gulp.task("build", gulp.series("clean",gulp.parallel("copy","webpack")));
 
     gulp.task('karma', function (done) {
         gulp.src([
