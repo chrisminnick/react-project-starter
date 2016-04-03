@@ -21,3 +21,7 @@
 * Write about using Debug window in Karma to see the rendered things from tests.
 
 * Change workflow to use branches for every new feature and merge changes when things are done.
+
+* Refactor first test for toggle to simplify
+
+* Write about chrome JS debugger
