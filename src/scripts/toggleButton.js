@@ -4,8 +4,8 @@
 (() => {
     "use strict";
 
-    exports.toggle = function toggle(){
-
+    exports.toggle = function toggle(element,buttonText){
+        element.innerHTML = buttonText;
     };
 
 })();
