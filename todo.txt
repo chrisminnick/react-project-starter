@@ -29,3 +29,7 @@
 * write about beforeEach and afterEach in Jasmine tests and how it's important
   to do cleanup in those, rather than at the end of the tests because if the
   tests fail, the cleanup doesn't happen, which could make other tests fail.
+
+* make different branches in the git repo to show different parts of the course / project
+
+
