@@ -3,11 +3,22 @@
 
     var toggleButton = require("../src/scripts/toggleButton.js");
     describe("toggleButton", function() {
+        var container;
+
+        beforeEach(function(){
+            container = document.createElement("div");
+            document.body.appendChild(container);
+        });
+
+        afterEach(function(){
+            removeElement(container);
+
+        });
 
         it("changes the text on a button", function() {
             var myButton = document.createElement("button");
             var toggledText = "Toggled.";
-            document.body.appendChild(myButton);
+            container.appendChild(myButton);
 
             toggleButton.toggle(myButton,toggledText);
 
@@ -15,13 +26,11 @@
 
             expect(buttonText).toEqual(toggledText);
 
-            removeElement(myButton);
-
         });
 
         it ("toggles between two messages", function() {
             var myButton = document.createElement("button");
-            document.body.appendChild(myButton);
+            container.appendChild(myButton);
 
             var originalMessage = "Toggle me.";
             var toggledMessage = "Toggled.";
@@ -40,8 +49,6 @@
 
             var buttonText = myButton.innerHTML;
             expect(buttonText).toEqual(toggledMessage);
-
-            //removeElement(myButton);
 
         });
 
