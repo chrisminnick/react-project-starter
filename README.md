@@ -15,10 +15,6 @@ An automated starter project for ES6 / React development
 7. npm rebuild (or, just run the ./gulp.sh shell script)
 
 
-## Todo
-
-1. Make gulpfile build run in sequence and end with BUILD OK
-
 ## Usage
 To build:
 
