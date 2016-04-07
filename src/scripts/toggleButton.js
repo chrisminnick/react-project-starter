@@ -4,18 +4,16 @@
 (() => {
     "use strict";
 
-    exports.toggle = function toggle(element,toggledText){
-        var originalText;
-        var toggled;
+    exports.toggle = function toggle(element){
+
+        var onMessage = element.getAttribute("onMessage");
+        var offMessage = element.getAttribute("offMessage");
         var buttonText = element.innerHTML;
 
-        if (buttonText === toggledText) {
-            toggled = 0;
-            element.innerHTML = "Toggle me.";
+        if (buttonText === onMessage) {
+            element.innerHTML = offMessage;
         } else {
-            originalText = element.innerHTML;
-            element.innerHTML = toggledText;
-            toggled = 1;
+            element.innerHTML = onMessage;
         }
     };
 

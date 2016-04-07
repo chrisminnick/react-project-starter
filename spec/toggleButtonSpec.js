@@ -17,38 +17,43 @@
 
         it("changes the text on a button", function() {
             var myButton = document.createElement("button");
-            var toggledText = "Toggled.";
+            var onMessage = "on";
+            var offMessage = "off";
+            myButton.setAttribute("onMessage",onMessage);
+            myButton.setAttribute("offMessage",offMessage);
+
             container.appendChild(myButton);
 
-            toggleButton.toggle(myButton,toggledText);
+            toggleButton.toggle(myButton);
 
             var buttonText = myButton.innerHTML;
 
-            expect(buttonText).toEqual(toggledText);
+            expect(buttonText).toEqual(onMessage);
 
         });
 
         it ("toggles between two messages", function() {
             var myButton = document.createElement("button");
+            var onMessage = "on";
+            var offMessage = "off";
+            myButton.setAttribute("onMessage",onMessage);
+            myButton.setAttribute("offMessage",offMessage);
+
             container.appendChild(myButton);
 
-            var originalMessage = "Toggle me.";
-            var toggledMessage = "Toggled.";
+            var buttonText;
 
-            toggleButton.toggle(myButton,toggledMessage);
+            toggleButton.toggle(myButton);
+            buttonText = myButton.innerHTML;
+            expect(buttonText).toEqual(onMessage);
 
-            var buttonText = myButton.innerHTML;
-            expect(buttonText).toEqual(toggledMessage);
+            toggleButton.toggle(myButton);
+            buttonText = myButton.innerHTML;
+            expect(buttonText).toEqual(offMessage);
 
-            toggleButton.toggle(myButton,toggledMessage);
-
-            var buttonText = myButton.innerHTML;
-            expect(buttonText).toEqual(originalMessage);
-
-            toggleButton.toggle(myButton,toggledMessage);
-
-            var buttonText = myButton.innerHTML;
-            expect(buttonText).toEqual(toggledMessage);
+            toggleButton.toggle(myButton);
+            buttonText = myButton.innerHTML;
+            expect(buttonText).toEqual(onMessage);
 
         });
 
