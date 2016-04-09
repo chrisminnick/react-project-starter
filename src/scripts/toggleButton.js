@@ -21,16 +21,12 @@
 
         function turnOn(){
             element.innerHTML = onMessage;
-            element.className += " " + activeClass;
+            element.classList.add(activeClass);
         }
 
         function turnOff(){
-            var str1 = activeClass;
-
             element.innerHTML = offMessage;
-
-            var re = new RegExp(str1, "g");
-            element.className = element.className.replace(re, "regex");
+            element.classList.remove(activeClass);
         }
     };
 
