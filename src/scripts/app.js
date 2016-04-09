@@ -4,10 +4,9 @@
 (function() {
     "use strict";
 
-    var sayHello = require("./sayHello.js");
+    var toggleButton = require("./toggleButton.js");
 
-    console.log(sayHello.greet("Your name"));
-    console.log("test");
+    toggleButton.initialize(document.getElementById("theButton"));
 
 
 
