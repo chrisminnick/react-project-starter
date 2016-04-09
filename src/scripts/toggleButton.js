@@ -9,8 +9,12 @@ var offMessage = "off";
 
 exports.initialize = function initialize(element){
 
-    onMessage = element.getAttribute("onMessage");
-    offMessage = element.getAttribute("offMessage");
+    if (element.getAttribute("onMessage")){
+        onMessage = element.getAttribute("onMessage");
+    }
+    if (element.getAttribute("offMessage")){
+        offMessage = element.getAttribute("offMessage");
+    }
 
     element.addEventListener("click", function(event){
         toggle(event.target);
