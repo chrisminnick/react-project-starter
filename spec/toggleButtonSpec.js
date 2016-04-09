@@ -8,6 +8,7 @@
         beforeEach(function(){
             container = document.createElement("div");
             document.body.appendChild(container);
+
         });
 
         afterEach(function(){
@@ -56,6 +57,51 @@
             expect(buttonText).toEqual(onMessage);
 
         });
+    });
+
+    it ("sets a class when its active", function() {
+        var myButton = document.createElement("button");
+        var onMessage = "on";
+        var offMessage = "off";
+        var activeClass = "active";
+
+        myButton.setAttribute("onMessage",onMessage);
+        myButton.setAttribute("offMessage",offMessage);
+        myButton.setAttribute("class","");
+        toggleButton.toggle(myButton);
+
+        var allClasses = myButton.getAttribute('class');
+        var hasClass = allClasses.split(' ').indexOf(activeClass) !== -1;
+
+
+        expect(hasClass).toBeTruthy();
+
+
+    });
+
+    it ("removes the active class when inactive", function() {
+        var myButton = document.createElement("button");
+        var onMessage = "on";
+        var offMessage = "off";
+        var activeClass = "active";
+
+        myButton.setAttribute("onMessage",onMessage);
+        myButton.setAttribute("offMessage",offMessage);
+        myButton.setAttribute("class","");
+
+        //toggle twice to get back to inactive
+        toggleButton.toggle(myButton);
+        toggleButton.toggle(myButton);
+
+        var allClasses = myButton.getAttribute('class');
+        var hasClass = allClasses.split(' ').indexOf(activeClass) === -1;
+
+
+        expect(hasClass).toBeTruthy();
+
+    })
+
+    it ("uses an attribute to specify whether on or off is its default state", function() {
 
 
     });
