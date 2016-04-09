@@ -3,10 +3,12 @@
  */
 (function() {
     "use strict";
-
     var toggleButton = require("./toggleButton.js");
 
-    toggleButton.initialize(document.getElementById("theButton"));
+    document.addEventListener("DOMContentLoaded",function(){
+        toggleButton.initialize(document.getElementById("theButton"));
+    });
+
 
 
 
