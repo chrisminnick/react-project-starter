@@ -13,21 +13,24 @@
         var buttonText = element.innerHTML;
 
         if (buttonText === onMessage) {
-            element.innerHTML = offMessage;
-            element.className =
-                element.className.replace( /(?:^|\s)active(?!\S)/g , '' );
+            turnOff(element);
+
         } else {
+            turnOn(element);
+        }
+
+        function turnOn(){
             element.innerHTML = onMessage;
             element.className += " " + activeClass;
-
         }
 
-        function addClass() {
-            //TODO
-        }
+        function turnOff(){
+            var str1 = activeClass;
 
-        function removeClass() {
-            //TODO
+            element.innerHTML = offMessage;
+
+            var re = new RegExp(str1, "g");
+            element.className = element.className.replace(re, "regex");
         }
     };
 
