@@ -16,6 +16,24 @@
 
         });
 
+        it("toggles button when clicked", function() {
+            var myButton = document.createElement("button");
+            var onMessage = "on";
+            var offMessage = "off";
+            myButton.setAttribute("onMessage",onMessage);
+            myButton.setAttribute("offMessage",offMessage);
+
+            container.appendChild(myButton);
+            toggleButton.initialize(myButton);
+
+
+            myButton.click(myButton);
+
+            var buttonText = myButton.innerHTML;
+
+            expect(buttonText).toEqual(onMessage);
+        });
+
         it("changes the text on a button", function() {
             var myButton = document.createElement("button");
             var onMessage = "on";
@@ -25,7 +43,8 @@
 
             container.appendChild(myButton);
 
-            toggleButton.toggle(myButton);
+            toggleButton.initialize(myButton);
+            myButton.click();
 
             var buttonText = myButton.innerHTML;
 
@@ -44,17 +63,19 @@
 
             var buttonText;
 
-            toggleButton.toggle(myButton);
-            buttonText = myButton.innerHTML;
-            expect(buttonText).toEqual(onMessage);
+            toggleButton.initialize(myButton);
 
-            toggleButton.toggle(myButton);
+            myButton.click();
             buttonText = myButton.innerHTML;
-            expect(buttonText).toEqual(offMessage);
+            expect(buttonText).toEqual(onMessage, "switch on");
 
-            toggleButton.toggle(myButton);
+            myButton.click();
             buttonText = myButton.innerHTML;
-            expect(buttonText).toEqual(onMessage);
+            expect(buttonText).toEqual(offMessage, "switch off");
+
+            myButton.click();
+            buttonText = myButton.innerHTML;
+            expect(buttonText).toEqual(onMessage, "switch on");
 
         });
     });
@@ -68,7 +89,10 @@
         myButton.setAttribute("onMessage",onMessage);
         myButton.setAttribute("offMessage",offMessage);
         myButton.setAttribute("class","");
-        toggleButton.toggle(myButton);
+
+        toggleButton.initialize(myButton);
+
+        myButton.click();
 
         var allClasses = myButton.getAttribute('class');
         var hasClass = allClasses.split(' ').indexOf(activeClass) !== -1;
@@ -89,9 +113,11 @@
         myButton.setAttribute("offMessage",offMessage);
         myButton.setAttribute("class","");
 
+        toggleButton.initialize(myButton);
+
         //toggle twice to get back to inactive
-        toggleButton.toggle(myButton);
-        toggleButton.toggle(myButton);
+        myButton.click();
+        myButton.click();
 
         var allClasses = myButton.getAttribute('class');
         var hasClass = allClasses.split(' ').indexOf(activeClass) === -1;

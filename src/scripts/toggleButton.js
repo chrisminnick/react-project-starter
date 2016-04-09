@@ -1,33 +1,41 @@
 /**
  * Created by chris on 4/3/16.
  */
-(() => {
     "use strict";
 
-    exports.toggle = function toggle(element){
+var activeClass = "active";
+var onMessage = "on";
+var offMessage = "off";
 
-        var onMessage = element.getAttribute("onMessage");
-        var offMessage = element.getAttribute("offMessage");
+exports.initialize = function initialize(element){
 
-        var activeClass = "active";
-        var buttonText = element.innerHTML;
+    onMessage = element.getAttribute("onMessage");
+    offMessage = element.getAttribute("offMessage");
 
-        if (buttonText === onMessage) {
-            turnOff(element);
+    element.addEventListener("click", function(event){
+        toggle(event.target);
+    });
+};
 
-        } else {
-            turnOn(element);
-        }
+function toggle(element){
+    var buttonText = element.innerHTML;
+    if (buttonText === onMessage) {
+        turnOff(element);
 
-        function turnOn(){
-            element.innerHTML = onMessage;
-            element.classList.add(activeClass);
-        }
+    } else {
+        turnOn(element);
+    }
 
-        function turnOff(){
-            element.innerHTML = offMessage;
-            element.classList.remove(activeClass);
-        }
-    };
+}
 
-})();
+function turnOn(element){
+    element.innerHTML = onMessage;
+    element.classList.add(activeClass);
+}
+
+function turnOff(element){
+    element.innerHTML = offMessage;
+    element.classList.remove(activeClass);
+}
+
+
