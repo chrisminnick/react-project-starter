@@ -104,7 +104,7 @@
 
 
         });
-        
+
         it ("sets a class when its active", function() {
             var myButton = document.createElement("button");
             var onMessage = "on";
